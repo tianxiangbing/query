@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Query组件，获取url参数和form表单json格式</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	</head>
+	<body>
+		<a href="?a=1%E4%B8%AD%E6%96%87%E6%B1%89%E5%AD%97&b=2#c=3">点我加参数</a>
+		<a href="javascript:void(0)" id="getParam">点我取参数</a>
+		<div id="form">
+			<p>用户名：<input type="text" name="name"/></p>
+			<p>　邮箱：<input type="text" name="email"/></p>
+			<p>手机号：<input type="text" name="phone"/></p>
+			<p>　地址：<input type="text" name="addr"/></p>
+			<p><input type="button" id="submit" value="提交"></p>
+			<div id="result"></div>
+		</div>
+		<script type="text/javascript" src="../src/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../src/query.js"></script>
+		<script>
+			$('#getParam').click(function(){
+				$('#result').append('a='+Query.getQuery('a')+"<br/>b="+Query.getQuery('b')+'<br/>c='+Query.getQuery('c',"#"))
+			});
+			$('#submit').click(function(){
+				var json = Query.getForm($('#form'));
+				$('#result').append('<p>'+ JSON.stringify(json) +'</p>');
+			});
+		</script>
+	</body>
+</html>
