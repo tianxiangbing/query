@@ -1,5 +1,7 @@
 # query
 对表单和url的操作
+[DEMO请点我](http://lovewebgames.com/jsmodule/query.html "query")
+
 ![](example/query.jpg)
 如图所示，它的主要作用就是取url的参数，和格式化form表单里的参数。
 # 用法
