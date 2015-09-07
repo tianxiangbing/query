@@ -18,3 +18,7 @@
 ##getForm:(form)
 	取form参数
 	form为当前的dom节点，可以是div或其他的类型的节点，不一定要<form>
+##setHash: function(obj)
+    设置锚点hash值.参数为json
+##getHash:function(name)
+    当有参数时，取hash中name对应的值，无参数时，取出所有锚点的json对象
