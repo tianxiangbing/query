@@ -1,0 +1,28 @@
+{
+  "name": "query",
+  "version": "1.0.3",
+  "description": "query url or form name",
+  "main": "src/query.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tianxiangbing/query.git"
+  },
+  "keywords": [
+    "query"
+  ],
+  "author": "tianxiangbing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tianxiangbing/query/issues"
+  },
+  "homepage": "https://github.com/tianxiangbing/query#readme",
+  "devDependencies": {
+    "jquery": "~1.8.1"
+  }
+}

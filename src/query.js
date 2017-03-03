@@ -9,11 +9,11 @@
 (function(root, factory) {
 	//amd
 	if (typeof define === 'function' && define.amd) {
-		define(['$'], factory);
+		define(['query'], factory);
 	} else if (typeof exports === 'object') { //umd
 		module.exports = factory();
 	} else {
-		root.Query = factory(window.Zepto || window.jQuery || $);
+		root.Query = factory(jQuery);
 	}
 })(this, function($) {
 	var Query = {
