@@ -1,5 +1,5 @@
 {
-  "name": "query",
+  "name": "jq-query",
   "version": "1.0.3",
   "description": "query url or form name",
   "main": "src/query.js",
