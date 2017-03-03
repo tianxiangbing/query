@@ -46,7 +46,7 @@
 			}
 			return decodeURI(StrBack);
 		},
-		getForm: function(form) {
+		getForm: function(form,isString) {
 			var result = {},
 				tempObj = {};
 			$(form).find('*[name]').each(function(i, v) {
@@ -167,7 +167,8 @@
 			var obj = {};
 			for (var o in result) {
 				var v = result[o];
-				if (typeof v == "object") {
+				//在这里，默认以json的形式返回，如需要转成json字符串，需要参数配置
+				if (typeof v == "object" && isString) {
 					obj[o] = JSON.stringify(v);
 				} else {
 					obj[o] = result[o]

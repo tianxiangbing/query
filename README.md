@@ -17,9 +17,10 @@
 	argname 是要取的参数名，如a=1这里要传"a";
 	type是指取的类型，默认是"?"，可以传"#"取锚点值
 	win是指要取的window对象，默认为当前的window.
-##getForm:(form)
+##getForm:(form,isString)
 	取form参数
 	form为当前的dom节点，可以是div或其他的类型的节点，不一定要<form>
+	isString参数默认为false,这时json返回里的二级数据将不作stringify处理
 ##setHash: function(obj)
     设置锚点hash值.参数为json
 ##getHash:function(name)
