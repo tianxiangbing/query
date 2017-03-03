@@ -1,3 +1,5 @@
+# npm 
+	npm install --save-dev jq-query
 # query
 对表单和url的操作
 [DEMO请点我](http://lovewebgames.com/jsmodule/query.html "query")
