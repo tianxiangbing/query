@@ -10,8 +10,9 @@
 	//amd
 	if (typeof define === 'function' && define.amd) {
 		define(['query'], factory);
-	} else if (typeof exports === 'object') { //umd
-		module.exports = factory();
+	} else if (typeof exports === 'object'&& require) { //umd
+		var jQuery = require('jquery');
+		module.exports = factory(jQuery);
 	} else {
 		root.Query = factory(jQuery);
 	}
