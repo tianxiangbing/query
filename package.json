@@ -1,6 +1,6 @@
 {
   "name": "jq-query",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "query url or form name",
   "main": "src/query.js",
   "directories": {

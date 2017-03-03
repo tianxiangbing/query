@@ -96,25 +96,28 @@
 				if ($(v).attr('listvalue')) {
 					if (!result[$(v).attr('listvalue')]) {
 						result[$(v).attr('listvalue')] = [];
-						$("input[listvalue='" + $(v).attr('listvalue') + "']").each(function() {
-							if ($(this).val() != "") {
-								var name = $(this).attr('name');
-								var obj = {};
-								if ($(this).data('type') == "json") {
-									obj[name] = JSON.parse($(this).val());
-								} else {
-									obj[name] = $.trim($(this).val());
+						$('[listrow]').each(function () {
+							var rowjson = {};
+							$("input,select,textarea",this).each(function () {
+								if ($(this).val() != "" && !$(this).hasClass('getvalued') && $(this).attr('name')) {
+									var name = $(this).attr('name');
+									if ($(this).data('type') == "json") {
+										rowjson[name] = JSON.parse($(this).val());
+									} else {
+										rowjson[name] = $.trim($(this).val());
+									}
+									if ($(this).attr("paramquest")) {
+										var o = JSON.parse($(this).attr("paramquest"));
+										rowjson = $.extend(rowjson, o);
+									}
+									$(this).addClass('getvalued');
 								}
-								if ($(this).attr("paramquest")) {
-									var o = JSON.parse($(this).attr("paramquest"));
-									obj = $.extend(obj, o);
-								}
-								result[$(v).attr('listvalue')].push(obj);
-								$(this).addClass('getvalued');
-							}
-						});
+							});
+							result[$(v).attr('listvalue')].push(rowjson);
+						})
 					}
 				}
+
 
 				if ($(v).attr('arrayvalue')) {
 					if (!result[$(v).attr('arrayvalue')]) {
