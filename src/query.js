@@ -9,19 +9,19 @@
  * Desc: 确保代码最新及时修复bug，请去github上下载最新源码 https://github.com/tianxiangbing/query
  * 功能：获取url上的参数或锚点值，获取form 里的表单值json
  */
-(function(root, factory) {
+(function (root, factory) {
 	//amd
 	if (typeof define === 'function' && define.amd) {
 		define(['query'], factory);
-	} else if (typeof exports === 'object'&& require) { //umd
+	} else if (typeof exports === 'object' && require) { //umd
 		var jQuery = require('jquery');
 		module.exports = factory(jQuery);
 	} else {
 		root.Query = factory(jQuery);
 	}
-})(this, function($) {
+})(this, function ($) {
 	var Query = {
-		getQuery: function(name, type, win) {
+		getQuery: function (name, type, win) {
 			var reg = new RegExp("(^|&|#)" + name + "=([^&]*)(&|$|#)", "i");
 			win = win || window;
 			var Url = win.location.href;
@@ -49,10 +49,10 @@
 			}
 			return decodeURI(StrBack);
 		},
-		getForm: function(form,isString) {
+		getForm: function (form, isString) {
 			var result = {},
 				tempObj = {};
-			$(form).find('*[name]').each(function(i, v) {
+			$(form).find('*[name]').each(function (i, v) {
 				var nameSpace,
 					name = $(v).attr('name'),
 					val = $.trim($(v).val()),
@@ -68,7 +68,7 @@
 				//处理radio add by yhx  2014-06-18
 				if ($(v).attr("type") == "radio") {
 					var tempradioVal = null;
-					$("input[name='" + name + "']:radio").each(function() {
+					$("input[name='" + name + "']:radio").each(function () {
 						if ($(this).is(":checked"))
 							tempradioVal = $.trim($(this).val());
 					});
@@ -82,7 +82,7 @@
 
 				if ($(v).attr("type") == "checkbox") {
 					var tempradioVal = [];
-					$("input[name='" + name + "']:checkbox").each(function() {
+					$("input[name='" + name + "']:checkbox").each(function () {
 						if ($(this).is(":checked"))
 							tempradioVal.push($.trim($(this).val()));
 					});
@@ -118,11 +118,10 @@
 					}
 				}
 
-
 				if ($(v).attr('arrayvalue')) {
 					if (!result[$(v).attr('arrayvalue')]) {
 						result[$(v).attr('arrayvalue')] = [];
-						$("input[arrayvalue='" + $(v).attr('arrayvalue') + "']").each(function() {
+						$("input[arrayvalue='" + $(v).attr('arrayvalue') + "']").each(function () {
 							if ($(this).val() != "") {
 								var obj = {};
 								if ($(this).data('type') == "json") {
@@ -165,7 +164,7 @@
 					} else {
 						result[nameSpace] = $.extend({}, result[nameSpace], tempObj);
 					}
-				} else {
+				} else if(!$(this).attr('listvalue')){
 					result[name] = val;
 				}
 
@@ -183,26 +182,26 @@
 			$('.getvalued').removeClass('getvalued');
 			return obj;
 		},
-		setHash: function(obj) {
+		setHash: function (obj) {
 			var str = '';
 			obj = $.extend(this.getHash(), obj)
 			var arr = [];
 			for (var v in obj) {
-				if(obj[v]!=''){
+				if (obj[v] != '') {
 					arr.push(v + '=' + encodeURIComponent(obj[v]));
 				}
 			}
-			str+=arr.join('&');
+			str += arr.join('&');
 			location.hash = str;
 			return this;
 		},
-		getHash: function(name) {
+		getHash: function (name) {
 			if (typeof name === "string") {
 				return this.getQuery(name, "#");
 			} else {
 				var obj = {};
 				var hash = location.hash;
-				if(hash.length>0){
+				if (hash.length > 0) {
 					hash = hash.substr(1);
 					var hashArr = hash.split('&');
 					for (var i = 0, l = hashArr.length; i < l; i++) {
